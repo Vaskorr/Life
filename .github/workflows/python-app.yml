@@ -33,11 +33,18 @@ jobs:
 
       - name: Build application
         run: pyinstaller --onefile Life.py
+        
+      - name: Archicve
+        run: |
+             sudo apt-get update
+             sudo apt-get install zip
+             zip -r arhive.zip *
+     
       - name: Upload artifacts
         uses: adityak74/google-drive-upload-git-action@main
         with:
           credentials: ${{ secrets.gkey }}
-          filename: "dist/Life.exe"
+          filename: "archive.zip"
           folderId: ${{ secrets.folder_id }}
-          name: "Life.exe"
+          name: "archive.zip"
           overwrite: "true"
