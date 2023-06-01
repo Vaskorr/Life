@@ -39,6 +39,12 @@ jobs:
              sudo apt-get update
              sudo apt-get install zip
              zip -r arhive.zip *
+             
+      - name: Debug
+        run: |
+          ls
+          cd dist
+          ls
      
       - name: Upload artifacts
         uses: adityak74/google-drive-upload-git-action@main
